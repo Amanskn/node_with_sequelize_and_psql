@@ -12,11 +12,14 @@ const sequelize = new Sequelize('test_db', 'postgres', 'password', {
         console.log('Connection has been established successfully with postgreSQL on host :-',sequelize.config.host);
       } catch (error) {
         console.error('Unable to connect to the database:', error.message);
+        // throw error
         process.exit(1);
       }
 
   }
 
+
   module.exports = {
-    connectDb
+    connectDb,
+    sequelize
   }
