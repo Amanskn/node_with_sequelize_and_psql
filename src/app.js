@@ -1,6 +1,6 @@
 const express = require("express");
-const { connectDb, sequelize } = require("../db-connection/connect-db");
-require('./../models')
+const { connectDb, sequelize } = require("./db-connection/connect-db");
+require('./models')
 
 const app = express();
 const port = process.env.PORT || 3000;

@@ -1,6 +1,6 @@
 const {config} = require('dotenv')
 config();
-const {startServer} = require('./src/app')
+const {startServer} = require('./app')
 
 
 ;(async ()=>{
