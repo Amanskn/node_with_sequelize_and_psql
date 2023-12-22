@@ -26,10 +26,12 @@ const createUser = async (req, res) => {
 
 const getUsers = async (req, res) => {
   try {
-    // console.log("Inside try of getUsers");
+    // console.log("Inside try of getUsers")
+    const allUsers = await User.findAll();
     res.status(200).json({
       status: "success",
-      data: "All users",
+      totalUsers: allUsers.length,
+      data: allUsers,
     });
   } catch (error) {
     console.log("@@Error inside user.controller", error.message);
