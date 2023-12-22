@@ -1,6 +1,7 @@
 const express = require("express");
 const { connectDb, sequelize } = require("./db-connection/connect-db");
-require('./models')
+require("./models");
+const { centralRouter } = require("./routes/index");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -8,13 +9,15 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.use("/api/v1/", centralRouter);
+
 async function startServer() {
   try {
     let connect = await connectDb();
     // await User.sync({ force: true });
     // console.log("The table for the User model was just (re)created!");
 
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ alter: true });
     // console.log("All models were synchronized successfully.");
     // await sequelize.drop()
     return new Promise(function (resolve, reject) {
